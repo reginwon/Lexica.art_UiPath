@@ -1,6 +1,6 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="923,1835" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:uuam="clr-namespace:UiPath.UIAutomationNext.Activities.Models;assembly=UiPath.UIAutomationNext.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1055,1835" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:uuam="clr-namespace:UiPath.UIAutomationNext.Activities.Models;assembly=UiPath.UIAutomationNext.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="40">
+    <scg:List x:TypeArguments="x:String" Capacity="80">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -41,6 +41,7 @@
       <x:String>UiPath.CSV</x:String>
       <x:String>UiPath.CSV.Activities</x:String>
       <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -100,6 +101,11 @@
       <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
       <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="606,1770" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -111,20 +117,19 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:BuildDataTable DataTable="[Dataset]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="544,60" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;url&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Prompt&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
-    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: Lexica" sap:VirtualizedContainerService.HintSize="544,1559" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="8a2f73b7-73d1-4573-88a0-614c03fc054d" Version="V2">
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: Lexica" sap:VirtualizedContainerService.HintSize="544,1659" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="8a2f73b7-73d1-4573-88a0-614c03fc054d" Version="V2">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="510,1342" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[Enumerable.Range(0,10)]">
+          <ui:ForEach x:TypeArguments="x:Int32" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="510,1442" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[Enumerable.Range(0,100)]">
             <ui:ForEach.Body>
-              <ActivityAction x:TypeArguments="x:Object">
+              <ActivityAction x:TypeArguments="x:Int32">
                 <ActivityAction.Argument>
-                  <DelegateInArgument x:TypeArguments="x:Object" Name="iterate" />
+                  <DelegateInArgument x:TypeArguments="x:Int32" Name="currentItem" />
                 </ActivityAction.Argument>
-                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="476,1156" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="476,1256" sap2010:WorkflowViewState.IdRef="Sequence_12">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="scg:IEnumerable(ui:UiElement)" Name="Element_List" />
                     <Variable x:TypeArguments="scg:IEnumerable(ui:UiElement)" Name="Old_Element_list" />
@@ -135,6 +140,7 @@
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
+                  <ui:BuildDataTable DataTable="[Dataset]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="434,60" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;url&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Prompt&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
                   <ui:FindChildren Children="[Element_List]" DisplayName="Find Children 'IMG'" Filter="&lt;webctrl tag='IMG' /&gt;" sap:VirtualizedContainerService.HintSize="434,107" sap2010:WorkflowViewState.IdRef="FindChildren_3" Scope="FIND_DESCENDANTS">
                     <ui:FindChildren.Target>
                       <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="93143113-77ac-40a6-a1d7-62cb898c0844" InformativeScreenshot="e72bd65351dc49dc2f3988a6f613d46d" Selector="&lt;webctrl aria-role='grid' tag='DIV' /&gt;">
@@ -171,7 +177,7 @@
                         <ActivityAction.Argument>
                           <DelegateInArgument x:TypeArguments="ui:UiElement" Name="CurrentElement" />
                         </ActivityAction.Argument>
-                        <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="476,1788" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                        <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="476,1808" sap2010:WorkflowViewState.IdRef="Sequence_10">
                           <Sequence.Variables>
                             <Variable x:TypeArguments="x:String" Name="Prompt_Text" />
                             <Variable x:TypeArguments="sd:DataRow" Name="NewRow" />
@@ -195,7 +201,7 @@
                               <OutArgument x:TypeArguments="x:String">[CurrentElement_Label]</OutArgument>
                             </uix:NGetAttribute.Result>
                           </uix:NGetAttribute>
-                          <Assign sap:VirtualizedContainerService.HintSize="338,62" sap2010:WorkflowViewState.IdRef="Assign_6">
+                          <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_6">
                             <Assign.To>
                               <OutArgument x:TypeArguments="x:Object">[NewRow("URL")]</OutArgument>
                             </Assign.To>
@@ -203,8 +209,8 @@
                               <InArgument x:TypeArguments="x:String">[CurrentElement_Label]</InArgument>
                             </Assign.Value>
                           </Assign>
-                          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="338,92" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[CurrentElement_Label]" />
-                          <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click" sap:VirtualizedContainerService.HintSize="338,137" sap2010:WorkflowViewState.IdRef="NClick_3" InUiElement="[CurrentElement]" InteractionMode="Simulate" KeyModifiers="None" MouseButton="Left" Version="V3" />
+                          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,92" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[CurrentElement_Label]" />
+                          <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click" sap:VirtualizedContainerService.HintSize="434,137" sap2010:WorkflowViewState.IdRef="NClick_3" InUiElement="[CurrentElement]" InteractionMode="Simulate" KeyModifiers="None" MouseButton="Left" Version="V3" />
                           <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Copy prompt'" sap:VirtualizedContainerService.HintSize="338,157" sap2010:WorkflowViewState.IdRef="NClick_4" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="8a2f73b7-73d1-4573-88a0-614c03fc054d" Version="V3">
                             <uix:NClick.Target>
                               <uix:TargetAnchorable BrowserURL="https://lexica.art/?prompt=89c21b35-da0d-4ebc-b113-ff3ca7fcb69a" DesignTimeRectangle="509, 345, 132, 34" DesignTimeScaleFactor="1" FriendlyName="'Copy prompt'" FullSelectorArgument="&lt;webctrl aaname='Copy prompt' parentid='fullscreen-modal-overlay' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Copy prompt' parentid='fullscreen-modal-overlay' tag='DIV' type='' class='text-xs rounded-md sm:text-xs active:scale-95 transition-all transform-gpu whitespace-nowrap flex-1 flex select-none cursor-pointer hover:bg-zinc-600 border border-zinc-600 bg-zinc-700 items-center justify-center  shadow px-2.5 py-2 w-fit-content' check:innerText='Copy prompt' /&gt;" Guid="0e55a7d1-b614-43f1-b809-bfe61c166829" ImageBase64="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" InformativeScreenshot="795bb0133f750bb0f5b48c8fa9340374.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Lexica' /&gt;" SearchSteps="FuzzySelector, Image" Version="V1" Visibility="Interactive" />
@@ -240,7 +246,7 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </ui:ForEach>
-                  <ui:AppendCsvFile DataTable="[Dataset]" Delimitator="Comma" DisplayName="Append to CSV" FilePath="ExportData.csv" sap:VirtualizedContainerService.HintSize="434,133" sap2010:WorkflowViewState.IdRef="AppendCsvFile_1" />
+                  <ui:AppendCsvFile DataTable="[Dataset]" Delimitator="Comma" DisplayName="Append to CSV" FilePath="ExportData_Nodup.csv" sap:VirtualizedContainerService.HintSize="434,133" sap2010:WorkflowViewState.IdRef="AppendCsvFile_1" />
                   <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_8">
                     <Assign.To>
                       <OutArgument x:TypeArguments="scg:IEnumerable(ui:UiElement)">[Old_Element_list]</OutArgument>
@@ -262,7 +268,7 @@
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <uix:NForEachUiElement DisplayName="For Each UI Element" ExtractDataSettings="&lt;Table xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' Type='Structured'&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='CurrentElement' ReferenceName='Column0'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;true&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&lt;/Table&gt;" ExtractMetadata="&lt;extract&gt;&lt;column exact='1' name='Column0' attr='src'&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='a' idx='1' /&gt;&lt;webctrl tag='img' idx='1' /&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="364,280" sap2010:WorkflowViewState.IdRef="NForEachUiElement_2" LimitExtractionTo="None" MaximumResults="0" ScopeIdentifier="8a2f73b7-73d1-4573-88a0-614c03fc054d" Version="V3">
+                        <uix:NForEachUiElement DisplayName="For Each UI Element" ExtractDataSettings="&lt;Table xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' Type='Structured'&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='CurrentElement' ReferenceName='Column0'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;true&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&lt;/Table&gt;" ExtractMetadata="&lt;extract&gt;&lt;column exact='1' name='Column0' attr='src'&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='a' idx='1' /&gt;&lt;webctrl tag='img' idx='1' /&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="388,280" sap2010:WorkflowViewState.IdRef="NForEachUiElement_2" LimitExtractionTo="None" MaximumResults="0" ScopeIdentifier="8a2f73b7-73d1-4573-88a0-614c03fc054d" Version="V3">
                           <uix:NForEachUiElement.Body>
                             <ActivityAction x:TypeArguments="x:Int32">
                               <ActivityAction.Argument>
